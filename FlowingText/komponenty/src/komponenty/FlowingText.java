@@ -46,7 +46,7 @@ public class FlowingText extends JPanel {
         horizontalTab = 0;
         verticalTab = 0;
         firstViewedColumn = panelColumns;
-        speed = 505;
+        speed = 50;//0 - minimum, 100 - maximum 
         text = "Żółć gęślą jaźń";
         changehappened = true;
         fs = frameStyle.Normal;
@@ -60,7 +60,9 @@ public class FlowingText extends JPanel {
             {
                 IncfirstViewedColumn();
                 try {
-                    Thread.sleep(speed);
+                    if (speed<0) speed = 0;
+                    if (speed>100) speed = 100;
+                    Thread.sleep(-9*speed+1000);
                 }
                     catch (InterruptedException e){
                 }
@@ -71,8 +73,8 @@ public class FlowingText extends JPanel {
         setPreferredSize(new Dimension(cellSize*panelColumns+2*frameWidth, cellSize*panelRows+2*frameWidth)); 
     }
 
-    public showNet getshowNet(){return isNetShown;}
-    public void setshowNet(showNet show){isNetShown = show; repaint();}
+    public showNet get_showNet(){return isNetShown;}
+    public void set_showNet(showNet show){isNetShown = show; repaint();}
     public boolean isNetshown(){
         if (isNetShown==showNet.Yes)
             return true;
@@ -86,26 +88,26 @@ public class FlowingText extends JPanel {
         repaint();
     }
 
-    public int getspeed(){return speed;}
-    public void setspeed(int s){speed = s;}
+    public int get_speed(){return speed;}
+    public void set_speed(int s){speed = s;}
  
-    public pointShape getpointShape(){return pointSh;}
-    public void setpointShape(pointShape sh){pointSh = sh;}
+    public pointShape get_pointShape(){return pointSh;}
+    public void set_pointShape(pointShape sh){pointSh = sh;}
  
-    public Color getColor_background(){return Color_background;}
-    public void setColor_background(Color col){Color_background = col;}
+    public Color get_Color_background(){return Color_background;}
+    public void set_Color_background(Color col){Color_background = col;}
  
-    public Color getColor_point(){return Color_point;}
-    public void setColor_point(Color col){Color_point = col;}
+    public Color get_Color_point(){return Color_point;}
+    public void set_Color_point(Color col){Color_point = col;}
  
-    public Color getColor_net(){return Color_net;}
-    public void setColor_net(Color col){Color_net = col;}
+    public Color get_Color_net(){return Color_net;}
+    public void set_Color_net(Color col){Color_net = col;}
  
-    public Color getColor_frame(){return Color_frame;}
-    public void setColor_frame(Color col){Color_frame = col;}
+    public Color get_Color_frame(){return Color_frame;}
+    public void set_Color_frame(Color col){Color_frame = col;}
  
-    public FlowingTextResolution getFlowingTextResolution(){ return resolution; }
-    public void setFlowingTextResolution(FlowingTextResolution res){
+    public FlowingTextResolution get_FlowingTextResolution(){ return resolution; }
+    public void set_FlowingTextResolution(FlowingTextResolution res){
         if (resolution != res) {
             changehappened = true;
             FlowingTextResolution oldFlowingTextResolution= resolution;
@@ -126,8 +128,8 @@ public class FlowingText extends JPanel {
         }
     }
 
-    public frameStyle getframeStyle(){ return fs; }
-    public void setframeStyle(frameStyle f){
+    public frameStyle get_frameStyle(){ return fs; }
+    public void set_frameStyle(frameStyle f){
         if (this.fs != f) {
             changehappened = true;
             frameStyle oldframeStyle = this.fs;

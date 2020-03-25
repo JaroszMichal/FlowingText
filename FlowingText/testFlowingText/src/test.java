@@ -62,16 +62,13 @@ public class test extends javax.swing.JFrame {
 
         jLabel1.setText("Resolution");
 
-        jCheckBox1.setSelected(true);
         jCheckBox1.setText("Show");
-        jCheckBox1.setActionCommand("Show");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
         });
 
-        jSlider1.setMaximum(900);
         jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSlider1StateChanged(evt);
@@ -136,6 +133,10 @@ public class test extends javax.swing.JFrame {
             }
         });
 
+        flowingText2.set_frameStyle(komponenty.frameStyle.Thin);
+        flowingText2.set_pointShape(komponenty.pointShape.Square);
+        flowingText2.set_showNet(komponenty.showNet.No);
+
         javax.swing.GroupLayout flowingText2Layout = new javax.swing.GroupLayout(flowingText2);
         flowingText2.setLayout(flowingText2Layout);
         flowingText2Layout.setHorizontalGroup(
@@ -162,44 +163,42 @@ public class test extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(flowingText2, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1))
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(12, 12, 12))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton4)
                                 .addGap(41, 41, 41)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1))
+                                    .addGap(10, 10, 10)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(flowingText2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(flowingText2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(flowingText2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -233,58 +232,58 @@ public class test extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         String s = (String)jComboBox1.getSelectedItem();
         if (s=="HIGH") {
-            flowingText2.setFlowingTextResolution(FlowingTextResolution.HIGH);
+            flowingText2.set_FlowingTextResolution(FlowingTextResolution.HIGH);
         }
         if (s=="MEDIUM") {
-            flowingText2.setFlowingTextResolution(FlowingTextResolution.MEDIUM);
+            flowingText2.set_FlowingTextResolution(FlowingTextResolution.MEDIUM);
         }
         if (s=="LOW") {
-            flowingText2.setFlowingTextResolution(FlowingTextResolution.LOW);
+            flowingText2.set_FlowingTextResolution(FlowingTextResolution.LOW);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (jCheckBox1.isSelected())
-            flowingText2.setshowNet(showNet.Yes);
+            flowingText2.set_showNet(showNet.Yes);
         else 
-            flowingText2.setshowNet(showNet.No);
+            flowingText2.set_showNet(showNet.No);
         jButton3.setEnabled(flowingText2.isNetshown());
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
-        flowingText2.setspeed(1000-jSlider1.getValue());
+        flowingText2.set_speed(jSlider1.getValue());
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         String s = (String)jComboBox2.getSelectedItem();
         if (s=="Circle") {
-            flowingText2.setpointShape(pointShape.Circle);
+            flowingText2.set_pointShape(pointShape.Circle);
         }
         if (s=="Square") {
-            flowingText2.setpointShape(pointShape.Square);
+            flowingText2.set_pointShape(pointShape.Square);
         }
         if (s=="Triangle") {
-            flowingText2.setpointShape(pointShape.Triangle);
+            flowingText2.set_pointShape(pointShape.Triangle);
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Color c = JColorChooser.showDialog(null, "Choose a point Color", jButton1.getForeground());
         if (c!=null)
-            flowingText2.setColor_point(c);
+            flowingText2.set_Color_point(c);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Color c = JColorChooser.showDialog(null, "Choose a background Color", jButton1.getForeground());
         if (c!=null)
-            flowingText2.setColor_background(c);
+            flowingText2.set_Color_background(c);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Color c = JColorChooser.showDialog(null, "Choose a net Color", jButton1.getForeground());
         if (c!=null)
-            flowingText2.setColor_net(c);
+            flowingText2.set_Color_net(c);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -294,24 +293,24 @@ public class test extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Color c = JColorChooser.showDialog(null, "Choose a frame Color", jButton1.getForeground());
         if (c!=null)
-            flowingText2.setColor_frame(c);
+            flowingText2.set_Color_frame(c);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         String s = (String)jComboBox3.getSelectedItem();
         if (s=="Thin") {
-            flowingText2.setframeStyle(frameStyle.Thin);
+            flowingText2.set_frameStyle(frameStyle.Thin);
         } 
         else
             if (s=="Normal") {
-                flowingText2.setframeStyle(frameStyle.Normal);
+                flowingText2.set_frameStyle(frameStyle.Normal);
             }
             else
                 if (s=="Bold") {
-                    flowingText2.setframeStyle(frameStyle.Bold);
+                    flowingText2.set_frameStyle(frameStyle.Bold);
                 }
                 else
-                    flowingText2.setframeStyle(frameStyle.Normal);
+                    flowingText2.set_frameStyle(frameStyle.Normal);
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     public static void main(String args[]) {

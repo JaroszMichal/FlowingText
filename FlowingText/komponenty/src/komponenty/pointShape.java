@@ -1,4 +1,4 @@
 package komponenty;
 public enum pointShape{
-    Circle, Square, Triangle;
+    FullPoint, Circle, Square, Triangle, Diamond;
 }

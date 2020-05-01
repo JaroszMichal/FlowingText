@@ -24,7 +24,8 @@ public class FlowingText extends JPanel {
     private frameStyle fs;
     private int frameWidth;
     private Color Color_background;
-    private Color Color_point;
+    private Color Color_point_on;
+    private Color Color_point_off;
     private Color Color_net;
     private Color Color_frame;
     private FontType ft;
@@ -46,28 +47,29 @@ public class FlowingText extends JPanel {
     
     public FlowingText(){
         propertyChangeSupport = new PropertyChangeSupport(this);
-        resolution = FlowingTextResolution.LOW;
-        isNetShown = showNet.Yes;
-        pointSh = pointShape.FullPoint;
-        panelRows = panelRowsLOW;
-        panelColumns = 2*panelRowsLOW;
+        resolution = FlowingTextResolution.MEDIUM;
+        isNetShown = showNet.No;
+        pointSh = pointShape.Circle;
+        panelRows = panelRowsMEDIUM;
+        panelColumns = 2*panelRowsMEDIUM;
         cellSize = 8;
         horizontalTab = 0;
         verticalTab = 0;
         firstViewedColumn = panelColumns;
-        speed = 50;//0 - minimum, 100 - maximum 
+        speed = 75;//0 - minimum, 100 - maximum 
         ft = FontType.Georgia;
         fnt = "Georgia";
         text = "Test Text";
-        fntst = FontStyle.Plain;
-        fontstyle = Font.PLAIN;
+        fntst = FontStyle.ItalicBold;
+        fontstyle = Font.BOLD+Font.ITALIC;
         changehappened = true;
         fs = frameStyle.Normal;
         frameWidth = frameWidthNormal;
         Color_background = UIManager.getColor ( "Panel.background" );
-        Color_point = Color.RED;
-        Color_net = Color.BLUE;
-        Color_frame = Color.BLACK;
+        Color_point_on = Color.RED;
+        Color_point_off = new Color(255,204,204);
+        Color_net = Color.BLACK;
+        Color_frame = Color.RED;
         Thread thread = new Thread(() -> {
             do
             {
@@ -75,7 +77,7 @@ public class FlowingText extends JPanel {
                 try {
                     if (speed<0) speed = 0;
                     if (speed>100) speed = 100;
-                    Thread.sleep(-9*speed+950);
+                    Thread.sleep(-9*speed+910);
                 }
                     catch (InterruptedException e){
                 }
@@ -110,8 +112,11 @@ public class FlowingText extends JPanel {
     public Color get_Color_background(){return Color_background;}
     public void set_Color_background(Color col){Color_background = col;}
  
-    public Color get_Color_point(){return Color_point;}
-    public void set_Color_point(Color col){Color_point = col;}
+    public Color get_Color_point_on(){return Color_point_on;}
+    public void set_Color_point_on(Color col){Color_point_on = col;}
+ 
+    public Color get_Color_point_off(){return Color_point_off;}
+    public void set_Color_point_off(Color col){Color_point_off = col;}
  
     public Color get_Color_net(){return Color_net;}
     public void set_Color_net(Color col){Color_net = col;}
@@ -257,18 +262,18 @@ public class FlowingText extends JPanel {
         }
     }
     
-    private void paintPoint(Graphics g, int row, int col){
+    private void paintPoint(Graphics g, int row, int col, Color color){
         if ((row>=0)&&(row<panelRows)&&(col>=0)&&(col<panelColumns)){
-            g.setColor(Color_point);
+            g.setColor(color);
             switch (pointSh) {
                 case Circle:
-                    g.fillOval(frameWidth+horizontalTab + col * cellSize + 1, frameWidth+verticalTab + row * cellSize + 1,cellSize-2, cellSize-2);
+                    g.fillOval(frameWidth+horizontalTab + col * cellSize + 1, frameWidth+verticalTab + row * cellSize + 1,cellSize, cellSize);
                     break;
                 case FullPoint:
                     g.fillRect(frameWidth+horizontalTab+col*cellSize, frameWidth+verticalTab+row*cellSize, cellSize, cellSize);
                     break;
                 case Square:
-                    g.fillRect(frameWidth+horizontalTab+col*cellSize + 2, frameWidth+verticalTab+row*cellSize + 2, cellSize - 3, cellSize - 3);
+                    g.fillRect(frameWidth+horizontalTab+col*cellSize + 1, frameWidth+verticalTab+row*cellSize + 1, cellSize - 1, cellSize - 1);
                     break;
                 case Triangle:
                     int[] xPoints = {frameWidth+horizontalTab+col*cellSize + 1,frameWidth+horizontalTab+(int)((0.5+col)*cellSize),frameWidth+horizontalTab+(col+1)*cellSize - 1};
@@ -367,12 +372,8 @@ public class FlowingText extends JPanel {
         g.fillRect(frameWidth, frameWidth, getWidth()-2*frameWidth, getHeight()-2*frameWidth);
         for (int i = 0; i<panelRows; i++)
             for (int j = 0; j<panelColumns; j++)
-                try {
-                    if (pointsMatrix[i][firstViewedColumn+j] == 1)
-                        paintPoint(g,i,j);
-                }
-                catch(java.lang.Exception e){
-                }
+                paintPoint(g,i,j,
+                        (pointsMatrix[i][firstViewedColumn+j] == 1) ? Color_point_on:Color_point_off);
         PaintNet(g);
     }
     

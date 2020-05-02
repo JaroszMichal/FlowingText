@@ -151,8 +151,8 @@ public class FlowingText extends JPanel {
                 case Georgia:
                     fnt = "Georgia";
                     break;
-                case Purisa:
-                    fnt = "Purisa";
+                case Test:
+                    fnt = "Elephant";
                     break;
                 case Serif:
                     fnt = "Serif";

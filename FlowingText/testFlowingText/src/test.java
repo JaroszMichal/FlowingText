@@ -129,8 +129,8 @@ public class test extends javax.swing.JFrame {
 
         jLabel4.setText("Frame type");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arial", "Courier", "Georgia", "Purisa", "Serif" }));
-        jComboBox4.setSelectedIndex(2);
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arial", "Courier", "Georgia", "Serif", "Test" }));
+        jComboBox4.setSelectedIndex(4);
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -368,8 +368,8 @@ public class test extends javax.swing.JFrame {
         if (s=="Georgia") {
             flowingText2.set_FontType(FontType.Georgia);
         }
-        if (s=="Purisa") {
-            flowingText2.set_FontType(FontType.Purisa);
+        if (s=="Test") {
+            flowingText2.set_FontType(FontType.Test);
         }
         if (s=="Serif") {
             flowingText2.set_FontType(FontType.Serif);

@@ -8,6 +8,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+/**
+ * Component extending JPanel for scrolling the text
+ * 
+ * @author Lewandowski Adam, Wojnicz Adam, Jarosz Michał
+ * @version 1.0
+ */
+
 public class FlowingText extends JPanel {
     
     private FlowingTextResolution resolution;
@@ -36,7 +43,6 @@ public class FlowingText extends JPanel {
     private int[][] pointsMatrix;
     private int matrixColumns;
     private PropertyChangeSupport propertyChangeSupport;  
-
     private int frameWidthThin = 2;
     private int frameWidthNormal = 6;
     private int frameWidthBold = 10;
@@ -44,7 +50,9 @@ public class FlowingText extends JPanel {
     private int panelRowsMEDIUM = 40;
     private int panelRowsHIGH = 55;
     
-    
+    /**
+     * Constructor
+     */
     public FlowingText(){
         propertyChangeSupport = new PropertyChangeSupport(this);
         resolution = FlowingTextResolution.MEDIUM;
@@ -88,8 +96,22 @@ public class FlowingText extends JPanel {
         setPreferredSize(new Dimension(cellSize*panelColumns+2*frameWidth, cellSize*panelRows+2*frameWidth)); 
     }
 
+    /**
+     * 
+     * @return returns if net is shown (Yes / No)
+     */
     public showNet get_showNet(){return isNetShown;}
+    
+    /**
+     * 
+     * @param show allows to decide to show net (Yes / No)
+     */
     public void set_showNet(showNet show){isNetShown = show; repaint();}
+    
+    /**
+     * 
+     * @return returns if net is shown (True / False)
+     */
     public boolean isNetshown(){
         if (isNetShown==showNet.Yes)
             return true;
@@ -97,34 +119,110 @@ public class FlowingText extends JPanel {
             return false;
     }
 
-    public int getfirstViewedColumn(){return firstViewedColumn;}
-    public void setfirstViewedColumn(int i){
+    /** 
+     * 
+     * @return returns position of pointer to column current shown as first.
+     */
+    private int getfirstViewedColumn(){return firstViewedColumn;}
+    private void setfirstViewedColumn(int i){
         firstViewedColumn = i;
         repaint();
     }
 
+    /**
+     * 
+     * @return  returns current speed (in range from 0 to 100)
+     */
     public int get_speed(){return speed;}
+    
+    /**
+     * 
+     * @param s sets speed of flow, 0 - delay 1 sec, 100 - 0.1  sec. All values between 0 and 100 are allowed.
+     */
     public void set_speed(int s){speed = s;}
  
+    /**
+     * 
+     * @return returns current shape of point (FullPoint, Circle, Square, Triangle, Diamond)
+     */
     public pointShape get_pointShape(){return pointSh;}
+    
+    /**
+     * 
+     * @param sh sets point shape, possible values: FullPoint, Circle, Square, Triangle, Diamond
+     */
     public void set_pointShape(pointShape sh){pointSh = sh;}
  
+    /**
+     * 
+     * @return returns color of background
+     */
     public Color get_Color_background(){return Color_background;}
+
+    /**
+     * 
+     * @param col sets color of background
+     */
     public void set_Color_background(Color col){Color_background = col;}
  
+    /**
+     * 
+     * @return returns color of turnerd on point
+     */
     public Color get_Color_point_on(){return Color_point_on;}
+    
+    /**
+     * 
+     * @param col sets color of turner on point
+     */
     public void set_Color_point_on(Color col){Color_point_on = col;}
  
+    /**
+     * 
+     * @return returns color of turned off point
+     */
     public Color get_Color_point_off(){return Color_point_off;}
+    
+    /**
+     * 
+     * @param col sets color of turned off point
+     */
     public void set_Color_point_off(Color col){Color_point_off = col;}
  
+    /**
+     * 
+     * @return returns color of net
+     */
     public Color get_Color_net(){return Color_net;}
+    
+    /**
+     * 
+     * @param col sets color of net
+     */
     public void set_Color_net(Color col){Color_net = col;}
  
+    /**
+     * 
+     * @return returns color of frame
+     */
     public Color get_Color_frame(){return Color_frame;}
+    
+    /**
+     * 
+     * @param col sets color of frame
+     */
     public void set_Color_frame(Color col){Color_frame = col;}
  
+    /**
+     * 
+     * @return returns string actually flowing
+     */
     public String get_Text(){return text;}
+    
+    /**
+     * 
+     * @param t sets text to show
+     */
     public void set_Text(String t){
         if (this.text != t) {
             changehappened = true;
@@ -135,7 +233,16 @@ public class FlowingText extends JPanel {
         }
     }
     
+    /**
+     * 
+     * @return returns type of font of flowing text
+     */
     public FontType get_FontType() {return ft;}
+    
+    /**
+     * 
+     * @param f sets font of flowing text, possible values: Arial, Courier, Georgia, Serif
+     */
     public void set_FontType(FontType f) {
         if (this.ft != f) {
             changehappened = true;
@@ -166,7 +273,16 @@ public class FlowingText extends JPanel {
         }
     }
  
-     public frameStyle get_frameStyle(){ return fs; }
+    /**
+     * 
+     * @return returns current style of frame
+     */
+    public frameStyle get_frameStyle(){ return fs; }
+    
+    /**
+     * 
+     * @param f sets style of frame, possible values: Thin, Normal, Bold
+     */
     public void set_frameStyle(frameStyle f){
         if (this.fs != f) {
             changehappened = true;
@@ -188,7 +304,16 @@ public class FlowingText extends JPanel {
         }
     }
     
+    /**
+     * 
+     * @return returns resolution of component
+     */
     public FlowingTextResolution get_FlowingTextResolution(){ return resolution; }
+    
+    /**
+     * 
+     * @param res sets resolution of flowing text, possible values: LOW, MEDIUM, HIGH
+     */
     public void set_FlowingTextResolution(FlowingTextResolution res){
         if (resolution != res) {
             changehappened = true;
@@ -210,7 +335,16 @@ public class FlowingText extends JPanel {
         }
     }
 
+    /**
+     * 
+     * @return returns style of font (plain, bold, italic)
+     */
     public FontStyle get_FontStyle(){ return fntst; }
+    
+    /**
+     * 
+     * @param f sets style of flowing text, possible values: Plain, Bold, Italic, ItalicBold
+     */
     public void set_FontStyle(FontStyle f){
         if (this.fntst != f) {
             changehappened = true;
@@ -237,7 +371,10 @@ public class FlowingText extends JPanel {
             propertyChangeSupport.firePropertyChange("FontStyle", oldFontStyle, this.fntst);
         }
     }
-
+    
+    /**
+     * Method used to calculate dimension of raster table after events could change it.
+     */
     private void calculateSize(){
         try {
             cellSize = (this.getHeight()-2*frameWidth-1) / panelRows;
@@ -252,6 +389,10 @@ public class FlowingText extends JPanel {
         }
     }
 
+    /**
+     * Method used to paint (or not) net (depends of settings)
+     * @param g object of Graphics
+     */
     private void PaintNet(Graphics g){
         if (isNetShown==showNet.Yes){
             g.setColor(Color_net);
@@ -262,6 +403,13 @@ public class FlowingText extends JPanel {
         }
     }
     
+    /**
+     * 
+     * @param g object of Graphics
+     * @param row coordinate of row to paint point
+     * @param col coordinate of column to paint point
+     * @param color color of point
+     */
     private void paintPoint(Graphics g, int row, int col, Color color){
         if ((row>=0)&&(row<panelRows)&&(col>=0)&&(col<panelColumns)){
             g.setColor(color);
@@ -289,6 +437,9 @@ public class FlowingText extends JPanel {
         }
     } 
     
+    /**
+     * Method fills matrix to scroll with points showing text
+     */
     private void fillPointsMatrix(){
         if (changehappened) {
             BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
@@ -355,13 +506,19 @@ public class FlowingText extends JPanel {
         }
     }
     
-    
+    /**
+     * Method increases first column of matrix is currently shown. When reaches end of matrix, starts from begin.
+     */
     public void IncfirstViewedColumn(){
         if (firstViewedColumn<matrixColumns-panelColumns) firstViewedColumn++;
         else firstViewedColumn = 0;
         repaint();
     }
 
+    /**
+     * Method paints component
+     * @param g object of Graphics
+     */
     public synchronized void paint(Graphics g) {
 
         calculateSize();
